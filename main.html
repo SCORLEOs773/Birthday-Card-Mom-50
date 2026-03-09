@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pragati's 50th Birthday Invitation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cinzel:wght@400;700;900&family=Lato:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #0a0a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 30px;
+      }
+
+      .card {
+        width: 720px;
+        min-height: 1020px;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:
+          0 0 80px rgba(255, 100, 0, 0.3),
+          0 0 160px rgba(120, 0, 255, 0.2),
+          0 40px 100px rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Deep jewel-tone background */
+      .card-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 20% 10%, #1a0533 0%, transparent 55%),
+          radial-gradient(ellipse at 80% 15%, #001a33 0%, transparent 50%),
+          radial-gradient(ellipse at 50% 55%, #1a0020 0%, transparent 60%),
+          radial-gradient(ellipse at 10% 90%, #0d1a00 0%, transparent 45%),
+          radial-gradient(ellipse at 90% 85%, #1a1000 0%, transparent 45%),
+          linear-gradient(
+            160deg,
+            #0d0020 0%,
+            #050015 30%,
+            #0a001a 60%,
+            #050010 100%
+          );
+        z-index: 0;
+      }
+
+      /* Bokeh glow orbs */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        z-index: 1;
+        pointer-events: none;
+      }
+      .orb1 {
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 60, 120, 0.18);
+        top: -50px;
+        left: -80px;
+      }
+      .orb2 {
+        width: 250px;
+        height: 250px;
+        background: rgba(80, 0, 255, 0.2);
+        top: 0;
+        right: -60px;
+      }
+      .orb3 {
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 140, 0, 0.15);
+        bottom: 200px;
+        left: -40px;
+      }
+      .orb4 {
+        width: 280px;
+        height: 280px;
+        background: rgba(0, 200, 100, 0.12);
+        bottom: 100px;
+        right: -60px;
+      }
+      .orb5 {
+        width: 350px;
+        height: 200px;
+        background: rgba(255, 200, 0, 0.1);
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Gold border frame */
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 8px;
+        border: 1px solid rgba(255, 200, 80, 0.3);
+        border-radius: 14px;
+        pointer-events: none;
+        z-index: 20;
+        box-shadow: inset 0 0 30px rgba(255, 180, 0, 0.05);
+      }
+
+      .content {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 55px 50px 45px;
+      }
+
+      /* ===== FLOATING BUTTERFLIES ===== */
+      .bf {
+        position: absolute;
+        z-index: 15;
+        pointer-events: none;
+      }
+
+      @keyframes flt1 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(-10deg);
+        }
+        50% {
+          transform: translate(10px, -18px) rotate(-4deg);
+        }
+      }
+      @keyframes flt2 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(8deg);
+        }
+        50% {
+          transform: translate(-12px, -14px) rotate(14deg);
+        }
+      }
+      @keyframes flt3 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(-6deg);
+        }
+        50% {
+          transform: translate(8px, -20px) rotate(0deg);
+        }
+      }
+      @keyframes flt4 {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(14deg);
+        }
+        50% {
+          transform: translate(-8px, -12px) rotate(6deg);
+        }
+      }
+      @keyframes wingbeat {
+        0%,
+        100% {
+          transform: scaleX(1);
+        }
+        50% {
+          transform: scaleX(0.55);
+        }
+      }
+
+      .bf-wing-l {
+        transform-origin: right center;
+        animation: wingbeat 1.8s ease-in-out infinite;
+      }
+      .bf-wing-r {
+        transform-origin: left center;
+        animation: wingbeat 1.8s ease-in-out infinite;
+      }
+
+      /* Monarch butterfly - top left */
+      .bf1 {
+        top: 25px;
+        left: 22px;
+        animation: flt1 5s ease-in-out infinite;
+      }
+      /* Blue morpho - top right */
+      .bf2 {
+        top: 18px;
+        right: 25px;
+        animation: flt2 6s ease-in-out infinite 0.7s;
+      }
+      /* Swallowtail - left mid */
+      .bf3 {
+        top: 200px;
+        left: 10px;
+        animation: flt3 4.5s ease-in-out infinite 0.3s;
+      }
+      /* Purple emperor - right mid */
+      .bf4 {
+        top: 210px;
+        right: 12px;
+        animation: flt4 5.5s ease-in-out infinite 1s;
+      }
+      /* Painted lady - bottom left */
+      .bf5 {
+        bottom: 200px;
+        left: 18px;
+        animation: flt1 5.2s ease-in-out infinite 0.5s;
+      }
+      /* Glasswing - bottom right */
+      .bf6 {
+        bottom: 190px;
+        right: 20px;
+        animation: flt2 4.8s ease-in-out infinite 1.2s;
+      }
+      /* Small ones bottom */
+      .bf7 {
+        bottom: 100px;
+        left: 100px;
+        animation: flt3 6s ease-in-out infinite 0.8s;
+      }
+      .bf8 {
+        bottom: 90px;
+        right: 100px;
+        animation: flt4 5s ease-in-out infinite 0.4s;
+      }
+      /* Top mid extras */
+      .bf9 {
+        top: 130px;
+        left: 45px;
+        animation: flt2 7s ease-in-out infinite 1.5s;
+      }
+      .bf10 {
+        top: 140px;
+        right: 48px;
+        animation: flt1 6.5s ease-in-out infinite 0.9s;
+      }
+
+      /* ===== HEADER ===== */
+      .invited-tag {
+        font-family: "Cinzel", serif;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        color: #ffd700;
+        opacity: 0.85;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .invited-tag::before,
+      .invited-tag::after {
+        content: "✦";
+        font-size: 8px;
+        color: #ff8c00;
+      }
+
+      /* ===== 50 VIBRANT YEARS ===== */
+      .fifty-block {
+        text-align: center;
+        margin-bottom: 2px;
+        position: relative;
+      }
+
+      .fifty-num {
+        font-family: "Cinzel", serif;
+        font-size: 168px;
+        font-weight: 900;
+        line-height: 0.9;
+        background: linear-gradient(
+          135deg,
+          #ff6b00 0%,
+          #ff0080 25%,
+          #aa00ff 50%,
+          #0080ff 75%,
+          #00e5ff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 0 30px rgba(255, 100, 0, 0.5))
+          drop-shadow(0 0 60px rgba(150, 0, 255, 0.3));
+        letter-spacing: -6px;
+        position: relative;
+      }
+
+      .vibrant-years {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 22px;
+        font-weight: 400;
+        background: linear-gradient(90deg, #ff8c00, #ff0080, #aa00ff, #ff8c00);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 4px;
+        animation: shimmer 4s linear infinite;
+        margin-top: 4px;
+        display: block;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 0% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      /* ===== DIVIDER ===== */
+      .div-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 80%;
+        margin: 18px auto;
+      }
+      .div-line-bar {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 150, 0, 0.6),
+          transparent
+        );
+      }
+      .div-dot {
+        color: #ff8c00;
+        font-size: 14px;
+      }
+
+      /* ===== NAME ===== */
+      .celebrating-txt {
+        font-family: "Lato", sans-serif;
+        font-weight: 100;
+        font-size: 11px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: rgba(255, 200, 100, 0.7);
+        margin-bottom: 8px;
+      }
+
+      .name {
+        font-family: "Playfair Display", serif;
+        font-size: 58px;
+        font-weight: 700;
+        font-style: italic;
+        background: linear-gradient(
+          120deg,
+          #ffd700 0%,
+          #ff8c00 30%,
+          #ff0080 60%,
+          #ffd700 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 5s linear infinite;
+        text-align: center;
+        line-height: 1.1;
+        filter: drop-shadow(0 0 20px rgba(255, 150, 0, 0.4));
+      }
+
+      /* ===== CENTER BUTTERFLY ===== */
+      .center-bf-wrap {
+        margin: 14px 0 16px;
+        filter: drop-shadow(0 0 25px rgba(255, 80, 150, 0.5))
+          drop-shadow(0 0 50px rgba(100, 0, 255, 0.3));
+        animation: flt3 5s ease-in-out infinite;
+      }
+
+      /* ===== INVITE TEXT ===== */
+      .invite-txt {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 16.5px;
+        color: rgba(255, 230, 180, 0.85);
+        text-align: center;
+        line-height: 1.75;
+        max-width: 430px;
+        margin-bottom: 26px;
+      }
+
+      /* ===== DETAILS BOX ===== */
+      .details-box {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 180, 0, 0.25);
+        border-radius: 16px;
+        padding: 26px 36px;
+        width: 88%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 20px;
+        position: relative;
+        backdrop-filter: blur(10px);
+        box-shadow:
+          0 0 30px rgba(255, 100, 0, 0.08),
+          inset 0 0 20px rgba(255, 150, 0, 0.03);
+      }
+
+      .det-item {
+        text-align: center;
+      }
+
+      .det-icon {
+        font-size: 22px;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .det-lbl {
+        font-family: "Lato", sans-serif;
+        font-weight: 100;
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255, 180, 80, 0.6);
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .det-val {
+        font-family: "Cinzel", serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.3;
+      }
+
+      .det-sub {
+        font-family: "Lato", sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+        color: #ff8c00;
+        margin-top: 3px;
+        display: block;
+        letter-spacing: 1px;
+      }
+
+      /* ===== VENUE ===== */
+      .venue-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 200, 255, 0.2);
+        border-radius: 12px;
+        padding: 16px 28px;
+        width: 80%;
+        text-align: center;
+        margin-bottom: 24px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 0 20px rgba(0, 200, 255, 0.06);
+      }
+
+      .venue-lbl {
+        font-family: "Lato", sans-serif;
+        font-weight: 100;
+        font-size: 9px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(0, 220, 255, 0.7);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .venue-lbl::before,
+      .venue-lbl::after {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: rgba(0, 200, 255, 0.3);
+        display: inline-block;
+      }
+
+      .venue-txt {
+        font-family: "Playfair Display", serif;
+        font-size: 15px;
+        color: rgba(255, 240, 200, 0.9);
+        line-height: 1.65;
+      }
+
+      /* ===== FOOTER ===== */
+      .footer-msg {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 14px;
+        color: rgba(255, 200, 100, 0.7);
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .rsvp {
+        font-family: "Lato", sans-serif;
+        font-weight: 100;
+        font-size: 9.5px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255, 100, 150, 0.7);
+      }
+
+      /* ===== SPARKLE STARS ===== */
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .star {
+        position: absolute;
+        z-index: 8;
+        pointer-events: none;
+        animation: twinkle ease-in-out infinite;
+      }
+      .star::before {
+        content: "✦";
+        color: #ffd700;
+        font-size: 10px;
+        filter: blur(0.3px);
+      }
+      .s1 {
+        top: 80px;
+        left: 150px;
+        animation-duration: 2.1s;
+      }
+      .s2 {
+        top: 90px;
+        right: 155px;
+        animation-duration: 2.8s;
+        animation-delay: 0.5s;
+      }
+      .s3 {
+        top: 330px;
+        left: 60px;
+        animation-duration: 3s;
+        animation-delay: 1s;
+      }
+      .s4 {
+        top: 350px;
+        right: 65px;
+        animation-duration: 2.3s;
+        animation-delay: 0.3s;
+      }
+      .s5 {
+        bottom: 280px;
+        left: 75px;
+        animation-duration: 2.6s;
+        animation-delay: 0.8s;
+      }
+      .s6 {
+        bottom: 260px;
+        right: 80px;
+        animation-duration: 2s;
+        animation-delay: 1.4s;
+      }
+      .s7 {
+        top: 170px;
+        left: 200px;
+        animation-duration: 3.2s;
+        animation-delay: 0.2s;
+      }
+      .s8 {
+        top: 160px;
+        right: 205px;
+        animation-duration: 2.4s;
+        animation-delay: 0.9s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-bg"></div>
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <div class="orb orb4"></div>
+      <div class="orb orb5"></div>
+
+      <!-- Sparkle stars -->
+      <div class="star s1"></div>
+      <div class="star s2"></div>
+      <div class="star s3"></div>
+      <div class="star s4"></div>
+      <div class="star s5"></div>
+      <div class="star s6"></div>
+      <div class="star s7"></div>
+      <div class="star s8"></div>
+
+      <!-- ===== MONARCH - top left ===== -->
+      <div class="bf bf1">
+        <svg width="80" height="65" viewBox="0 0 120 95">
+          <g class="bf-wing-l">
+            <!-- Upper left wing -->
+            <path
+              d="M58 45 C45 25, 15 10, 5 25 C-5 40, 10 65, 35 68 C48 70, 57 58, 58 45Z"
+              fill="#FF6B00"
+            />
+            <path
+              d="M58 45 C45 25, 15 10, 5 25 C-5 40, 10 65, 35 68 C48 70, 57 58, 58 45Z"
+              fill="none"
+              stroke="#000"
+              stroke-width="1.2"
+              opacity="0.5"
+            />
+            <!-- Vein patterns -->
+            <path
+              d="M58 45 L20 28"
+              stroke="#000"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <path
+              d="M55 50 L12 48"
+              stroke="#000"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <path
+              d="M56 55 L25 65"
+              stroke="#000"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <!-- White spots -->
+            <circle cx="8" cy="30" r="3" fill="white" opacity="0.9" />
+            <circle cx="18" cy="18" r="2.5" fill="white" opacity="0.9" />
+            <circle cx="32" cy="14" r="2" fill="white" opacity="0.9" />
+            <!-- Lower left wing -->
+            <path
+              d="M58 52 C50 55, 30 60, 18 75 C8 88, 20 98, 38 90 C52 83, 58 68, 58 52Z"
+              fill="#FF8C00"
+            />
+            <path
+              d="M58 52 C50 55, 30 60, 18 75 C8 88, 20 98, 38 90 C52 83, 58 68, 58 52Z"
+              fill="none"
+              stroke="#000"
+              stroke-width="1.2"
+              opacity="0.5"
+            />
+            <circle cx="22" cy="80" r="2.5" fill="white" opacity="0.9" />
+            <circle cx="35" cy="88" r="2" fill="white" opacity="0.8" />
+          </g>
+          <g class="bf-wing-r">
+            <!-- Upper right wing -->
+            <path
+              d="M62 45 C75 25, 105 10, 115 25 C125 40, 110 65, 85 68 C72 70, 63 58, 62 45Z"
+              fill="#FF6B00"
+            />
+            <path
+              d="M62 45 C75 25, 105 10, 115 25 C125 40, 110 65, 85 68 C72 70, 63 58, 62 45Z"
+              fill="none"
+              stroke="#000"
+              stroke-width="1.2"
+              opacity="0.5"
+            />
+            <path
+              d="M62 45 L100 28"
+              stroke="#000"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <path
+              d="M65 50 L108 48"
+              stroke="#000"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <path
+              d="M64 55 L95 65"
+              stroke="#000"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <circle cx="112" cy="30" r="3" fill="white" opacity="0.9" />
+            <circle cx="102" cy="18" r="2.5" fill="white" opacity="0.9" />
+            <circle cx="88" cy="14" r="2" fill="white" opacity="0.9" />
+            <!-- Lower right -->
+            <path
+              d="M62 52 C70 55, 90 60, 102 75 C112 88, 100 98, 82 90 C68 83, 62 68, 62 52Z"
+              fill="#FF8C00"
+            />
+            <path
+              d="M62 52 C70 55, 90 60, 102 75 C112 88, 100 98, 82 90 C68 83, 62 68, 62 52Z"
+              fill="none"
+              stroke="#000"
+              stroke-width="1.2"
+              opacity="0.5"
+            />
+            <circle cx="98" cy="80" r="2.5" fill="white" opacity="0.9" />
+            <circle cx="85" cy="88" r="2" fill="white" opacity="0.8" />
+          </g>
+          <!-- Body -->
+          <ellipse cx="60" cy="55" rx="5" ry="22" fill="#111" />
+          <circle cx="60" cy="34" r="5.5" fill="#111" />
+          <path
+            d="M57 31 Q48 18 42 12"
+            stroke="#111"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <path
+            d="M63 31 Q72 18 78 12"
+            stroke="#111"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <circle cx="42" cy="12" r="2.5" fill="#FF6B00" />
+          <circle cx="78" cy="12" r="2.5" fill="#FF6B00" />
+        </svg>
+      </div>
+
+      <!-- ===== BLUE MORPHO - top right ===== -->
+      <div class="bf bf2">
+        <svg width="90" height="70" viewBox="0 0 120 95">
+          <g class="bf-wing-l">
+            <path
+              d="M58 44 C42 22, 10 8, 2 24 C-6 42, 12 68, 38 70 C52 71, 58 56, 58 44Z"
+              fill="#0044FF"
+            />
+            <path
+              d="M58 44 C42 22, 10 8, 2 24 C-6 42, 12 68, 38 70 C52 71, 58 56, 58 44Z"
+              fill="url(#morpho_l)"
+              opacity="0.7"
+            />
+            <path
+              d="M58 52 C48 56, 26 62, 14 78 C4 92, 18 100, 38 92 C52 85, 58 68, 58 52Z"
+              fill="#0055FF"
+            />
+            <path
+              d="M58 52 C48 56, 26 62, 14 78 C4 92, 18 100, 38 92 C52 85, 58 68, 58 52Z"
+              fill="url(#morpho_l2)"
+              opacity="0.6"
+            />
+            <!-- Eye spots -->
+            <circle cx="20" cy="38" r="8" fill="#001a66" />
+            <circle cx="20" cy="38" r="5" fill="#003399" />
+            <circle cx="20" cy="38" r="2.5" fill="#00aaff" />
+            <circle cx="18" cy="36" r="1" fill="white" opacity="0.8" />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M62 44 C78 22, 110 8, 118 24 C126 42, 108 68, 82 70 C68 71, 62 56, 62 44Z"
+              fill="#0044FF"
+            />
+            <path
+              d="M62 44 C78 22, 110 8, 118 24 C126 42, 108 68, 82 70 C68 71, 62 56, 62 44Z"
+              fill="url(#morpho_r)"
+              opacity="0.7"
+            />
+            <path
+              d="M62 52 C72 56, 94 62, 106 78 C116 92, 102 100, 82 92 C68 85, 62 68, 62 52Z"
+              fill="#0055FF"
+            />
+            <circle cx="100" cy="38" r="8" fill="#001a66" />
+            <circle cx="100" cy="38" r="5" fill="#003399" />
+            <circle cx="100" cy="38" r="2.5" fill="#00aaff" />
+            <circle cx="98" cy="36" r="1" fill="white" opacity="0.8" />
+          </g>
+          <defs>
+            <radialGradient id="morpho_l" cx="40%" cy="40%">
+              <stop offset="0%" stop-color="#00ccff" />
+              <stop offset="100%" stop-color="#0022cc" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="morpho_r" cx="60%" cy="40%">
+              <stop offset="0%" stop-color="#00ccff" />
+              <stop offset="100%" stop-color="#0022cc" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="morpho_l2" cx="40%" cy="50%">
+              <stop offset="0%" stop-color="#00aaff" stop-opacity="0.5" />
+              <stop offset="100%" stop-color="#0022cc" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="60" cy="55" rx="5" ry="22" fill="#001033" />
+          <circle cx="60" cy="34" r="5.5" fill="#001033" />
+          <path
+            d="M57 31 Q48 18 42 12"
+            stroke="#001033"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <path
+            d="M63 31 Q72 18 78 12"
+            stroke="#001033"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <circle cx="42" cy="12" r="2.5" fill="#00ccff" />
+          <circle cx="78" cy="12" r="2.5" fill="#00ccff" />
+        </svg>
+      </div>
+
+      <!-- ===== GREEN SWALLOWTAIL - left mid ===== -->
+      <div class="bf bf3">
+        <svg width="60" height="50" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 42 C40 20, 8 8, 2 22 C-4 38, 14 62, 36 66 C50 68, 54 54, 54 42Z"
+              fill="#00aa44"
+            />
+            <path
+              d="M54 42 C40 20, 8 8, 2 22 C-4 38, 14 62, 36 66 C50 68, 54 54, 54 42Z"
+              fill="none"
+              stroke="#004400"
+              stroke-width="1"
+            />
+            <path
+              d="M54 50 C44 56, 24 62, 14 78 C6 90, 18 98, 36 90 C50 82, 54 66, 54 50Z"
+              fill="#00cc55"
+            />
+            <!-- Black tiger stripes -->
+            <path
+              d="M54 42 L18 28"
+              stroke="#003300"
+              stroke-width="4"
+              opacity="0.7"
+            />
+            <path
+              d="M52 50 L10 46"
+              stroke="#003300"
+              stroke-width="3.5"
+              opacity="0.7"
+            />
+            <path
+              d="M52 56 L22 66"
+              stroke="#003300"
+              stroke-width="3"
+              opacity="0.6"
+            />
+            <!-- Yellow spots -->
+            <circle cx="6" cy="26" r="4" fill="#ffff00" opacity="0.9" />
+            <circle cx="16" cy="16" r="3" fill="#ffff00" opacity="0.8" />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 42 C70 20, 102 8, 108 22 C114 38, 96 62, 74 66 C60 68, 56 54, 56 42Z"
+              fill="#00aa44"
+            />
+            <path
+              d="M56 42 C70 20, 102 8, 108 22 C114 38, 96 62, 74 66 C60 68, 56 54, 56 42Z"
+              fill="none"
+              stroke="#004400"
+              stroke-width="1"
+            />
+            <path
+              d="M56 50 C66 56, 86 62, 96 78 C104 90, 92 98, 74 90 C60 82, 56 66, 56 50Z"
+              fill="#00cc55"
+            />
+            <path
+              d="M56 42 L92 28"
+              stroke="#003300"
+              stroke-width="4"
+              opacity="0.7"
+            />
+            <path
+              d="M58 50 L100 46"
+              stroke="#003300"
+              stroke-width="3.5"
+              opacity="0.7"
+            />
+            <circle cx="104" cy="26" r="4" fill="#ffff00" opacity="0.9" />
+            <circle cx="94" cy="16" r="3" fill="#ffff00" opacity="0.8" />
+          </g>
+          <ellipse cx="55" cy="54" rx="4.5" ry="20" fill="#002200" />
+          <circle cx="55" cy="35" r="5" fill="#002200" />
+          <path
+            d="M52 32 Q44 20 38 14"
+            stroke="#002200"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <path
+            d="M58 32 Q66 20 72 14"
+            stroke="#002200"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <circle cx="38" cy="14" r="2" fill="#ffff00" />
+          <circle cx="72" cy="14" r="2" fill="#ffff00" />
+        </svg>
+      </div>
+
+      <!-- ===== PURPLE EMPEROR - right mid ===== -->
+      <div class="bf bf4">
+        <svg width="65" height="52" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 42 C38 18, 6 6, 0 22 C-6 40, 12 64, 36 68 C50 70, 54 55, 54 42Z"
+              fill="#6600cc"
+            />
+            <path
+              d="M54 42 C38 18, 6 6, 0 22 C-6 40, 12 64, 36 68 C50 70, 54 55, 54 42Z"
+              fill="url(#purp_sheen)"
+              opacity="0.6"
+            />
+            <path
+              d="M54 52 C44 57, 22 63, 12 79 C3 92, 16 100, 36 92 C50 84, 54 68, 54 52Z"
+              fill="#8800ee"
+            />
+            <circle cx="18" cy="35" r="9" fill="#3d0080" />
+            <circle cx="18" cy="35" r="5.5" fill="#6600cc" />
+            <circle cx="18" cy="35" r="2.5" fill="#cc88ff" />
+            <circle cx="16" cy="33" r="1" fill="white" opacity="0.9" />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 42 C72 18, 104 6, 110 22 C116 40, 98 64, 74 68 C60 70, 56 55, 56 42Z"
+              fill="#6600cc"
+            />
+            <path
+              d="M56 42 C72 18, 104 6, 110 22 C116 40, 98 64, 74 68 C60 70, 56 55, 56 42Z"
+              fill="url(#purp_sheen2)"
+              opacity="0.6"
+            />
+            <path
+              d="M56 52 C66 57, 88 63, 98 79 C107 92, 94 100, 74 92 C60 84, 56 68, 56 52Z"
+              fill="#8800ee"
+            />
+            <circle cx="92" cy="35" r="9" fill="#3d0080" />
+            <circle cx="92" cy="35" r="5.5" fill="#6600cc" />
+            <circle cx="92" cy="35" r="2.5" fill="#cc88ff" />
+            <circle cx="90" cy="33" r="1" fill="white" opacity="0.9" />
+          </g>
+          <defs>
+            <radialGradient id="purp_sheen" cx="35%" cy="35%">
+              <stop offset="0%" stop-color="#ee88ff" />
+              <stop offset="100%" stop-color="#6600cc" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="purp_sheen2" cx="65%" cy="35%">
+              <stop offset="0%" stop-color="#ee88ff" />
+              <stop offset="100%" stop-color="#6600cc" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="55" cy="55" rx="5" ry="20" fill="#1a0033" />
+          <circle cx="55" cy="36" r="5.5" fill="#1a0033" />
+          <path
+            d="M52 33 Q43 20 37 13"
+            stroke="#1a0033"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <path
+            d="M58 33 Q67 20 73 13"
+            stroke="#1a0033"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <circle cx="37" cy="13" r="2.5" fill="#cc88ff" />
+          <circle cx="73" cy="13" r="2.5" fill="#cc88ff" />
+        </svg>
+      </div>
+
+      <!-- ===== PINK & GOLD - bottom left ===== -->
+      <div class="bf bf5">
+        <svg width="70" height="55" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 42 C40 18, 6 5, 0 21 C-6 39, 14 65, 38 68 C52 70, 54 55, 54 42Z"
+              fill="#ff0088"
+            />
+            <path
+              d="M54 50 C44 56, 22 64, 12 80 C3 93, 16 101, 37 92 C51 85, 54 68, 54 50Z"
+              fill="#ff44aa"
+            />
+            <!-- Gold details -->
+            <path
+              d="M54 42 L16 26"
+              stroke="#ffd700"
+              stroke-width="1.2"
+              opacity="0.8"
+            />
+            <path
+              d="M52 50 L8 46"
+              stroke="#ffd700"
+              stroke-width="1.2"
+              opacity="0.8"
+            />
+            <circle cx="5" cy="25" r="4" fill="#ffd700" opacity="0.9" />
+            <circle cx="18" cy="15" r="3" fill="#ffd700" opacity="0.8" />
+            <circle cx="16" cy="78" r="3.5" fill="#ffd700" opacity="0.8" />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 42 C70 18, 104 5, 110 21 C116 39, 96 65, 72 68 C58 70, 56 55, 56 42Z"
+              fill="#ff0088"
+            />
+            <path
+              d="M56 50 C66 56, 88 64, 98 80 C107 93, 94 101, 73 92 C59 85, 56 68, 56 50Z"
+              fill="#ff44aa"
+            />
+            <path
+              d="M56 42 L94 26"
+              stroke="#ffd700"
+              stroke-width="1.2"
+              opacity="0.8"
+            />
+            <circle cx="105" cy="25" r="4" fill="#ffd700" opacity="0.9" />
+            <circle cx="92" cy="15" r="3" fill="#ffd700" opacity="0.8" />
+            <circle cx="94" cy="78" r="3.5" fill="#ffd700" opacity="0.8" />
+          </g>
+          <ellipse cx="55" cy="55" rx="4.5" ry="20" fill="#660033" />
+          <circle cx="55" cy="36" r="5" fill="#660033" />
+          <path
+            d="M52 33 Q43 20 37 13"
+            stroke="#660033"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <path
+            d="M58 33 Q67 20 73 13"
+            stroke="#660033"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <circle cx="37" cy="13" r="2.5" fill="#ff0088" />
+          <circle cx="73" cy="13" r="2.5" fill="#ff0088" />
+        </svg>
+      </div>
+
+      <!-- ===== TEAL GLASSWING - bottom right ===== -->
+      <div class="bf bf6">
+        <svg width="68" height="53" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 42 C40 18, 6 5, 0 21 C-6 39, 14 65, 38 68 C52 70, 54 55, 54 42Z"
+              fill="#00ccbb"
+              opacity="0.65"
+            />
+            <path
+              d="M54 42 C40 18, 6 5, 0 21 C-6 39, 14 65, 38 68 C52 70, 54 55, 54 42Z"
+              fill="none"
+              stroke="#00ffee"
+              stroke-width="1.2"
+              opacity="0.7"
+            />
+            <path
+              d="M54 50 C44 56, 22 64, 12 80 C3 93, 16 101, 37 92 C51 85, 54 68, 54 50Z"
+              fill="#00bbaa"
+              opacity="0.6"
+            />
+            <path
+              d="M54 42 L16 26"
+              stroke="#00ffee"
+              stroke-width="1"
+              opacity="0.6"
+            />
+            <path
+              d="M52 50 L8 46"
+              stroke="#00ffee"
+              stroke-width="1"
+              opacity="0.6"
+            />
+            <path
+              d="M52 56 L22 66"
+              stroke="#00ffee"
+              stroke-width="1"
+              opacity="0.5"
+            />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 42 C70 18, 104 5, 110 21 C116 39, 96 65, 72 68 C58 70, 56 55, 56 42Z"
+              fill="#00ccbb"
+              opacity="0.65"
+            />
+            <path
+              d="M56 42 C70 18, 104 5, 110 21 C116 39, 96 65, 72 68 C58 70, 56 55, 56 42Z"
+              fill="none"
+              stroke="#00ffee"
+              stroke-width="1.2"
+              opacity="0.7"
+            />
+            <path
+              d="M56 50 C66 56, 88 64, 98 80 C107 93, 94 101, 73 92 C59 85, 56 68, 56 50Z"
+              fill="#00bbaa"
+              opacity="0.6"
+            />
+            <path
+              d="M56 42 L94 26"
+              stroke="#00ffee"
+              stroke-width="1"
+              opacity="0.6"
+            />
+            <path
+              d="M58 50 L102 46"
+              stroke="#00ffee"
+              stroke-width="1"
+              opacity="0.6"
+            />
+          </g>
+          <ellipse cx="55" cy="55" rx="4.5" ry="20" fill="#003333" />
+          <circle cx="55" cy="36" r="5" fill="#003333" />
+          <path
+            d="M52 33 Q43 20 37 13"
+            stroke="#003333"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <path
+            d="M58 33 Q67 20 73 13"
+            stroke="#003333"
+            stroke-width="1.5"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <circle cx="37" cy="13" r="2.5" fill="#00ffee" />
+          <circle cx="73" cy="13" r="2.5" fill="#00ffee" />
+        </svg>
+      </div>
+
+      <!-- small bottom extras -->
+      <div class="bf bf7">
+        <svg width="46" height="36" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 44 C40 22, 8 10, 2 24 C-4 40, 14 64, 37 67 C51 69, 54 56, 54 44Z"
+              fill="#ff4400"
+            />
+            <path
+              d="M54 52 C44 57, 23 64, 13 79 C4 91, 17 99, 37 91 C51 83, 54 67, 54 52Z"
+              fill="#ff6600"
+            />
+            <circle cx="8" cy="28" r="3.5" fill="#ffd700" opacity="0.9" />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 44 C70 22, 102 10, 108 24 C114 40, 96 64, 73 67 C59 69, 56 56, 56 44Z"
+              fill="#ff4400"
+            />
+            <path
+              d="M56 52 C66 57, 87 64, 97 79 C106 91, 93 99, 73 91 C59 83, 56 67, 56 52Z"
+              fill="#ff6600"
+            />
+            <circle cx="102" cy="28" r="3.5" fill="#ffd700" opacity="0.9" />
+          </g>
+          <ellipse cx="55" cy="54" rx="4" ry="18" fill="#220000" />
+          <circle cx="55" cy="37" r="4.5" fill="#220000" />
+          <path
+            d="M52 34 Q44 22 38 15"
+            stroke="#220000"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <path
+            d="M58 34 Q66 22 72 15"
+            stroke="#220000"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <circle cx="38" cy="15" r="2" fill="#ff4400" />
+          <circle cx="72" cy="15" r="2" fill="#ff4400" />
+        </svg>
+      </div>
+
+      <div class="bf bf8">
+        <svg width="48" height="38" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 44 C40 22, 8 10, 2 24 C-4 40, 14 64, 37 67 C51 69, 54 56, 54 44Z"
+              fill="#aa00ff"
+            />
+            <path
+              d="M54 52 C44 57, 23 64, 13 79 C4 91, 17 99, 37 91 C51 83, 54 67, 54 52Z"
+              fill="#cc44ff"
+            />
+            <path
+              d="M54 44 L18 28"
+              stroke="#ff88ff"
+              stroke-width="1"
+              opacity="0.7"
+            />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 44 C70 22, 102 10, 108 24 C114 40, 96 64, 73 67 C59 69, 56 56, 56 44Z"
+              fill="#aa00ff"
+            />
+            <path
+              d="M56 52 C66 57, 87 64, 97 79 C106 91, 93 99, 73 91 C59 83, 56 67, 56 52Z"
+              fill="#cc44ff"
+            />
+            <path
+              d="M56 44 L92 28"
+              stroke="#ff88ff"
+              stroke-width="1"
+              opacity="0.7"
+            />
+          </g>
+          <ellipse cx="55" cy="54" rx="4" ry="18" fill="#220033" />
+          <circle cx="55" cy="37" r="4.5" fill="#220033" />
+          <path
+            d="M52 34 Q44 22 38 15"
+            stroke="#220033"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <path
+            d="M58 34 Q66 22 72 15"
+            stroke="#220033"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <circle cx="38" cy="15" r="2" fill="#cc44ff" />
+          <circle cx="72" cy="15" r="2" fill="#cc44ff" />
+        </svg>
+      </div>
+
+      <div class="bf bf9">
+        <svg width="42" height="33" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 44 C40 22, 8 10, 2 24 C-4 40, 14 64, 37 67 C51 69, 54 56, 54 44Z"
+              fill="#00cc44"
+            />
+            <path
+              d="M54 52 C44 57, 23 64, 13 79 C4 91, 17 99, 37 91 C51 83, 54 67, 54 52Z"
+              fill="#00ff66"
+            />
+            <path
+              d="M54 44 L16 26"
+              stroke="#ffff00"
+              stroke-width="1.5"
+              opacity="0.6"
+            />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 44 C70 22, 102 10, 108 24 C114 40, 96 64, 73 67 C59 69, 56 56, 56 44Z"
+              fill="#00cc44"
+            />
+            <path
+              d="M56 52 C66 57, 87 64, 97 79 C106 91, 93 99, 73 91 C59 83, 56 67, 56 52Z"
+              fill="#00ff66"
+            />
+            <path
+              d="M56 44 L94 26"
+              stroke="#ffff00"
+              stroke-width="1.5"
+              opacity="0.6"
+            />
+          </g>
+          <ellipse cx="55" cy="54" rx="4" ry="18" fill="#002200" />
+          <circle cx="55" cy="37" r="4.5" fill="#002200" />
+          <path
+            d="M52 34 Q44 22 38 15"
+            stroke="#002200"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <path
+            d="M58 34 Q66 22 72 15"
+            stroke="#002200"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <circle cx="38" cy="15" r="2" fill="#ffff00" />
+          <circle cx="72" cy="15" r="2" fill="#ffff00" />
+        </svg>
+      </div>
+
+      <div class="bf bf10">
+        <svg width="44" height="35" viewBox="0 0 110 90">
+          <g class="bf-wing-l">
+            <path
+              d="M54 44 C40 22, 8 10, 2 24 C-4 40, 14 64, 37 67 C51 69, 54 56, 54 44Z"
+              fill="#ff0044"
+            />
+            <path
+              d="M54 52 C44 57, 23 64, 13 79 C4 91, 17 99, 37 91 C51 83, 54 67, 54 52Z"
+              fill="#ff4466"
+            />
+            <circle cx="14" cy="30" r="5" fill="#ff8800" opacity="0.9" />
+            <circle cx="14" cy="30" r="2.5" fill="#ffff00" opacity="0.9" />
+          </g>
+          <g class="bf-wing-r">
+            <path
+              d="M56 44 C70 22, 102 10, 108 24 C114 40, 96 64, 73 67 C59 69, 56 56, 56 44Z"
+              fill="#ff0044"
+            />
+            <path
+              d="M56 52 C66 57, 87 64, 97 79 C106 91, 93 99, 73 91 C59 83, 56 67, 56 52Z"
+              fill="#ff4466"
+            />
+            <circle cx="96" cy="30" r="5" fill="#ff8800" opacity="0.9" />
+            <circle cx="96" cy="30" r="2.5" fill="#ffff00" opacity="0.9" />
+          </g>
+          <ellipse cx="55" cy="54" rx="4" ry="18" fill="#330011" />
+          <circle cx="55" cy="37" r="4.5" fill="#330011" />
+          <path
+            d="M52 34 Q44 22 38 15"
+            stroke="#330011"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <path
+            d="M58 34 Q66 22 72 15"
+            stroke="#330011"
+            stroke-width="1.5"
+            fill="none"
+          />
+          <circle cx="38" cy="15" r="2" fill="#ff0044" />
+          <circle cx="72" cy="15" r="2" fill="#ff0044" />
+        </svg>
+      </div>
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <div class="content">
+        <div class="invited-tag">You Are Invited</div>
+
+        <!-- 50 VIBRANT YEARS -->
+        <div class="fifty-block">
+          <div class="fifty-num">50</div>
+          <span class="vibrant-years">✦ Vibrant Years ✦</span>
+        </div>
+
+        <div class="div-line" style="margin-top: 14px">
+          <div class="div-line-bar"></div>
+          <div class="div-dot">🦋</div>
+          <div class="div-line-bar"></div>
+        </div>
+
+        <!-- NAME -->
+        <div style="text-align: center; margin-bottom: 10px">
+          <div class="celebrating-txt">Celebrating</div>
+          <div class="name">Pragati Sharma</div>
+        </div>
+
+        <div class="div-line">
+          <div class="div-line-bar"></div>
+          <div class="div-dot">✦</div>
+          <div class="div-dot">🦋</div>
+          <div class="div-dot">✦</div>
+          <div class="div-line-bar"></div>
+        </div>
+
+        <!-- CENTER HERO BUTTERFLY -->
+        <div class="center-bf-wrap">
+          <svg width="220" height="165" viewBox="0 0 200 150">
+            <defs>
+              <radialGradient id="wl1" cx="35%" cy="40%">
+                <stop offset="0%" stop-color="#ff8800" />
+                <stop offset="40%" stop-color="#ff0080" />
+                <stop offset="100%" stop-color="#6600cc" />
+              </radialGradient>
+              <radialGradient id="wl2" cx="35%" cy="60%">
+                <stop offset="0%" stop-color="#ff4400" />
+                <stop offset="100%" stop-color="#aa00ff" />
+              </radialGradient>
+              <radialGradient id="wr1" cx="65%" cy="40%">
+                <stop offset="0%" stop-color="#ff8800" />
+                <stop offset="40%" stop-color="#ff0080" />
+                <stop offset="100%" stop-color="#6600cc" />
+              </radialGradient>
+              <radialGradient id="wr2" cx="65%" cy="60%">
+                <stop offset="0%" stop-color="#ff4400" />
+                <stop offset="100%" stop-color="#aa00ff" />
+              </radialGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- Left upper wing -->
+            <path
+              d="M98 72 C80 40, 30 15, 8 28 C-10 42, 10 88, 48 98 C74 105, 95 86, 98 72Z"
+              fill="url(#wl1)"
+              filter="url(#glow)"
+            />
+            <!-- Wing details/veins -->
+            <path
+              d="M98 72 L28 40"
+              stroke="#ff6600"
+              stroke-width="1.5"
+              opacity="0.5"
+            />
+            <path
+              d="M95 78 L12 65"
+              stroke="#ff6600"
+              stroke-width="1.2"
+              opacity="0.4"
+            />
+            <path
+              d="M94 85 L30 95"
+              stroke="#ff6600"
+              stroke-width="1"
+              opacity="0.4"
+            />
+            <!-- Eye spots on upper left -->
+            <circle cx="35" cy="52" r="13" fill="#330000" opacity="0.9" />
+            <circle cx="35" cy="52" r="9" fill="#ff4400" opacity="0.8" />
+            <circle cx="35" cy="52" r="5" fill="#ffaa00" opacity="0.9" />
+            <circle cx="35" cy="52" r="2" fill="white" opacity="0.95" />
+            <circle cx="32" cy="49" r="1" fill="white" opacity="0.7" />
+            <!-- White edge dots -->
+            <circle cx="10" cy="32" r="4" fill="white" opacity="0.9" />
+            <circle cx="14" cy="20" r="3" fill="white" opacity="0.85" />
+            <circle cx="26" cy="14" r="3" fill="white" opacity="0.8" />
+            <circle cx="40" cy="12" r="2.5" fill="white" opacity="0.8" />
+
+            <!-- Left lower wing -->
+            <path
+              d="M98 82 C82 90, 50 100, 30 122 C14 140, 30 155, 55 145 C78 136, 96 110, 98 82Z"
+              fill="url(#wl2)"
+              filter="url(#glow)"
+            />
+            <circle cx="38" cy="128" r="8" fill="#330000" opacity="0.8" />
+            <circle cx="38" cy="128" r="5" fill="#ff6600" opacity="0.8" />
+            <circle cx="38" cy="128" r="2" fill="#ffff00" opacity="0.9" />
+            <circle cx="55" cy="140" r="3" fill="white" opacity="0.8" />
+            <circle cx="32" cy="143" r="2.5" fill="white" opacity="0.75" />
+
+            <!-- Right upper wing -->
+            <path
+              d="M102 72 C120 40, 170 15, 192 28 C210 42, 190 88, 152 98 C126 105, 105 86, 102 72Z"
+              fill="url(#wr1)"
+              filter="url(#glow)"
+            />
+            <path
+              d="M102 72 L172 40"
+              stroke="#ff6600"
+              stroke-width="1.5"
+              opacity="0.5"
+            />
+            <path
+              d="M105 78 L188 65"
+              stroke="#ff6600"
+              stroke-width="1.2"
+              opacity="0.4"
+            />
+            <path
+              d="M106 85 L170 95"
+              stroke="#ff6600"
+              stroke-width="1"
+              opacity="0.4"
+            />
+            <circle cx="165" cy="52" r="13" fill="#330000" opacity="0.9" />
+            <circle cx="165" cy="52" r="9" fill="#ff4400" opacity="0.8" />
+            <circle cx="165" cy="52" r="5" fill="#ffaa00" opacity="0.9" />
+            <circle cx="165" cy="52" r="2" fill="white" opacity="0.95" />
+            <circle cx="162" cy="49" r="1" fill="white" opacity="0.7" />
+            <circle cx="190" cy="32" r="4" fill="white" opacity="0.9" />
+            <circle cx="186" cy="20" r="3" fill="white" opacity="0.85" />
+            <circle cx="174" cy="14" r="3" fill="white" opacity="0.8" />
+            <circle cx="160" cy="12" r="2.5" fill="white" opacity="0.8" />
+
+            <!-- Right lower wing -->
+            <path
+              d="M102 82 C118 90, 150 100, 170 122 C186 140, 170 155, 145 145 C122 136, 104 110, 102 82Z"
+              fill="url(#wr2)"
+              filter="url(#glow)"
+            />
+            <circle cx="162" cy="128" r="8" fill="#330000" opacity="0.8" />
+            <circle cx="162" cy="128" r="5" fill="#ff6600" opacity="0.8" />
+            <circle cx="162" cy="128" r="2" fill="#ffff00" opacity="0.9" />
+            <circle cx="145" cy="140" r="3" fill="white" opacity="0.8" />
+            <circle cx="168" cy="143" r="2.5" fill="white" opacity="0.75" />
+
+            <!-- Body -->
+            <ellipse cx="100" cy="95" rx="7" ry="35" fill="#1a0000" />
+            <ellipse cx="100" cy="95" rx="4" ry="33" fill="#330000" />
+            <!-- Head -->
+            <circle cx="100" cy="62" r="9" fill="#1a0000" />
+            <circle cx="100" cy="62" r="6" fill="#330000" />
+            <!-- Antennae -->
+            <path
+              d="M97 56 C88 36 75 20 65 10"
+              stroke="#ff8800"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M103 56 C112 36 125 20 135 10"
+              stroke="#ff8800"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <circle cx="65" cy="10" r="5" fill="#ffd700" />
+            <circle cx="65" cy="10" r="2.5" fill="#ff8800" />
+            <circle cx="135" cy="10" r="5" fill="#ffd700" />
+            <circle cx="135" cy="10" r="2.5" fill="#ff8800" />
+
+            <!-- Glow halo under butterfly -->
+            <ellipse
+              cx="100"
+              cy="100"
+              rx="50"
+              ry="10"
+              fill="#ff4400"
+              opacity="0.08"
+              filter="url(#glow)"
+            />
+          </svg>
+        </div>
+
+        <p class="invite-txt">
+          Flutter into a world of colour &amp; joy as we celebrate<br />
+          a spectacular soul's most radiant milestone yet
+        </p>
+
+        <!-- DETAILS -->
+        <div class="details-box">
+          <div class="det-item">
+            <span class="det-icon">🗓️</span>
+            <span class="det-lbl">Date</span>
+            <div class="det-val">10 March<br />2026</div>
+            <span class="det-sub">Monday</span>
+          </div>
+          <div class="det-item">
+            <span class="det-icon">🕔</span>
+            <span class="det-lbl">Time</span>
+            <div class="det-val">5:30 PM</div>
+            <span class="det-sub">Evening</span>
+          </div>
+          <div class="det-item">
+            <span class="det-icon">🦋</span>
+            <span class="det-lbl">Theme</span>
+            <div class="det-val">Butterfly<br />Gala</div>
+            <span class="det-sub">Dress vibrant!</span>
+          </div>
+        </div>
+
+        <!-- VENUE -->
+        <div class="venue-box">
+          <div class="venue-lbl">📍 &nbsp;Venue</div>
+          <div class="venue-txt">
+            P-122, Rana Pratap Enclave<br />Ajit Road, Jalandhar Cantt
+          </div>
+        </div>
+
+        <div class="div-line" style="margin-bottom: 14px">
+          <div class="div-line-bar"></div>
+          <div class="div-dot">🌟</div>
+          <div class="div-dot">🦋</div>
+          <div class="div-dot">🌟</div>
+          <div class="div-line-bar"></div>
+        </div>
+
+        <p class="footer-msg">
+          Snacks · Smiles · Sweet Memories · Butterfly Cake 🦋
+        </p>
+        <p class="rsvp" style="margin-top: 8px">
+          ✦ Kindly confirm your presence ✦
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
